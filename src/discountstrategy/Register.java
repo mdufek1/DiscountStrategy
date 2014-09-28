@@ -10,11 +10,11 @@ package discountstrategy;
  * @author Mike
  */
 public class Register {
-  
-    Reciept reciept = new Reciept();
+    Reciept reciept;
+    
     RecieptPrinter recieptPrinter = new RecieptPrinter();
     public void startOrder(String customerNumber){
-        
+        reciept = new Reciept();
         reciept.customerLookup(customerNumber);
     }
     

@@ -56,5 +56,9 @@ public class LineItem {
         
     }
 
+    public double getTotalOff() {
+        return totalOff;
+    }
+
     
 }

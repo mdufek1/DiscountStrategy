@@ -14,8 +14,9 @@ public class Reciept {
     private Product product;
     LineItem lineItem = new LineItem();
     LineItem[] lineItems = new LineItem[0];
-
-     public Customer customerLookup(String customerNumber){
+    
+    
+     public void customerLookup(String customerNumber){
         
         
         for (Customer i: DummyDatabase.customers) {
@@ -29,7 +30,7 @@ public class Reciept {
                 customer = new Customer("Not Found","Not Found","Not Found");
             }
         }
-        return customer;
+        
     }
      
     public void addCheckedOutItem(String productID, int qty){
@@ -52,6 +53,14 @@ public class Reciept {
 
     }
     
+    public double calculateAmmountSaved(){
+        double saved = 0;
+        for (LineItem l: this.lineItems) {
+            saved+=l.getTotalOff();
+        }
+        return saved;
+    }
+   
     public void addLineItem(LineItem lineItem){
         LineItem[] tempLines = new LineItem[lineItems.length + 1];
         System.arraycopy(lineItems, 0, tempLines, 0, lineItems.length);
@@ -61,6 +70,10 @@ public class Reciept {
 
     public LineItem[] getLineItems() {
         return lineItems;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
     
     
