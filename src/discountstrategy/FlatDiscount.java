@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package discountstrategy;
 
 /**
- *
+ * this class discounts a product by a set dollar amount
  * @author Mike
  */
 public class FlatDiscount implements DiscountStrategy {
@@ -31,12 +27,12 @@ public class FlatDiscount implements DiscountStrategy {
         return DISCOUNT_TYPE;
     }
 
-    public double getDiscountAmmount() {
+    public double getDiscountAmount() {
         return discountAmmount;
     }
 
     @Override
-    public void setDiscountAmmount(double discountAmmount) {
+    public void setDiscountAmount(double discountAmmount) {
         this.discountAmmount = discountAmmount;
     }
 

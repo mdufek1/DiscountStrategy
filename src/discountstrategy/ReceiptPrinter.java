@@ -2,29 +2,30 @@ package discountstrategy;
 
 import java.text.NumberFormat;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
+ *  This class outputs the receipt object
  * @author Mike
  */
-public class RecieptPrinter {
+public class ReceiptPrinter {
   String storeNumber = "4856";
-NumberFormat nf = NumberFormat.getCurrencyInstance();    
-    public void outputReciept(Reciept reciept){
+  
+
+NumberFormat nf = NumberFormat.getCurrencyInstance();   
+/**
+ * This outputs the receipt, it's a bit sloppy but functional
+     * @param receipt - the receipt object that contains all the necessary information
+ */
+    public void outputReceipt(Receipt receipt){
         System.out.println("________________________________________________________________________________________________________________________");
         System.out.println("Khols Store Number: "+this.storeNumber);
-        System.out.println("Customer Number: "+reciept.getCustomer().getCustomerNumber());
+        System.out.println("Customer Number: "+receipt.getCustomer().getCustomerNumber());
         System.out.println("________________________________________________________________________________________________________________________");
-        LineItem[] lineitems = reciept.getLineItems();
+        LineItem[] lineitems = receipt.getLineItems();
         for(LineItem l: lineitems){
             System.out.println(l.toString());
         }
         System.out.println("________________________________________________________________________________________________________________________");
-        System.out.println("You Saved: "+ nf.format(reciept.calculateAmmountSaved()));
+        System.out.println("You Saved: "+ nf.format(receipt.calculateAmountSaved()));
         System.out.println("Thank you for your patronage!");
         System.out.println("________________________________________________________________________________________________________________________");
         System.out.println("\n\n");

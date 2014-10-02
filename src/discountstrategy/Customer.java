@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package discountstrategy;
 
 /**
- *
+ * This class represents a customer in a physical store.
  * @author Mike
  */
 public class Customer {
@@ -20,26 +16,50 @@ public class Customer {
         this.customerNumber = customerNumber;
     }
 
+    /**
+     * 
+     * @return firstName
+     */
     public String getFirstName() {
         return firstName;
     }
 
+    /**
+     * sets the first name of the customer
+     * @param firstName 
+     */
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
+    /**
+     * 
+     * @return lastName
+     */
     public String getLastName() {
         return lastName;
     }
-
+    
+    /**
+     * sets the last name of the customer
+     * @param lastName 
+     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    /**
+     * 
+     * @return customerNumber
+     */
     public String getCustomerNumber() {
         return customerNumber;
     }
 
+    /**
+     * sets the customer's number
+     * @param customerNumber 
+     */
     public void setCustomerNumber(String customerNumber) {
         this.customerNumber = customerNumber;
     }

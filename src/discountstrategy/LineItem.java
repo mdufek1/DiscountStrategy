@@ -2,13 +2,8 @@ package discountstrategy;
 
 import java.text.NumberFormat;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
- *
+ *This class represents a line on a receipt.
  * @author Mike
  */
 public class LineItem {
@@ -31,7 +26,12 @@ public class LineItem {
     public LineItem() {
     }
     
-
+    /**
+     * Takes a product and quantity and calculates the discount and puts all the information into a lineItem object
+     * @param product - product object
+     * @param qty - how many of that product
+     * @return LineItem
+     */
     public LineItem calculateLine(Product product,int qty){
         
         
@@ -48,6 +48,10 @@ public class LineItem {
       return lineItem;
     }
     
+    /**
+     * converts a lineitem into a string.
+     * @return 
+     */
     @Override
     public String toString(){
        NumberFormat nf = NumberFormat.getCurrencyInstance();
@@ -56,6 +60,10 @@ public class LineItem {
         
     }
 
+    /**
+     * gets the total amount off that was calculated in the calculateLine method
+     * @return 
+     */
     public double getTotalOff() {
         return totalOff;
     }

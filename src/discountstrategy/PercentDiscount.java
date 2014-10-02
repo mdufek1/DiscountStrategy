@@ -1,23 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package discountstrategy;
 
 /**
- *
+ * this class discounts a product by a percentage
  * @author Mike
  */
 public class PercentDiscount implements DiscountStrategy {
     public static final String DISCOUNT_TYPE = "Percent Discount";
-    private double discountAmmount = 0.15;
+    private double discountAmount = 0.15;
     public int qty;
     private double productPrice;
     private double calculatedDiscount;
+    
     @Override
     public void discount(int qty, double productPrice) {
-       calculatedDiscount = (productPrice * qty) * discountAmmount;
+       calculatedDiscount = (productPrice * qty) * discountAmount;
+    }
+
+    public PercentDiscount() {
+    }
+
+    public PercentDiscount(double discountAmmount) {
+        setDiscountAmount(discountAmmount);
     }
 
     @Override
@@ -25,15 +29,17 @@ public class PercentDiscount implements DiscountStrategy {
         return DISCOUNT_TYPE;
     }
 
-    public double getDiscountAmmount() {
-        return discountAmmount;
+    @Override
+    public double getDiscountAmount() {
+        return discountAmount;
     }
 
-    public void setDiscountAmmount(double discountAmmount) {
-        if(discountAmmount > 1 || discountAmmount < 0){
+    @Override
+    public void setDiscountAmount(double discountAmount) {
+        if(discountAmount > 1 || discountAmount < 0){
             throw new IllegalArgumentException("The discount ammount must be less than one and greater than or equal to 0"); 
         }
-        else{this.discountAmmount = discountAmmount;}
+        else{this.discountAmount = discountAmount;}
     }
     
 
