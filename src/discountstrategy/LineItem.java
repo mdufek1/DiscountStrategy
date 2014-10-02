@@ -11,7 +11,7 @@ public class LineItem {
     String productName;
     double productPrice;
     int qty;
-    double totalOff = 0;
+    double totalOff;
     double total;
 
     public LineItem(String productID, String productName, double productPrice, int qty, double totalOff, double total) {
@@ -33,8 +33,10 @@ public class LineItem {
      * @return LineItem
      */
     public LineItem calculateLine(Product product,int qty){
-        
-        
+        if(qty<1){
+            throw new IllegalArgumentException("Quantity must be 1 or greater");
+        }
+        totalOff = 0;
         for (DiscountStrategy d : product.getDiscounts()) {
             
             d.discount(d.getQty(),d.getProductPrice());

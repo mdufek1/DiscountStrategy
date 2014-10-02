@@ -15,6 +15,9 @@ public class GuiOutput implements DisplayStrategy{
 
     @Override
     public void outputReciept(String message) {  
+      if(message == null || message.isEmpty()){
+        throw new IllegalArgumentException("message must be a valid string");
+      }
       JOptionPane.showMessageDialog(null, message);
    
     }

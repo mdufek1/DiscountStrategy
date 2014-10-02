@@ -15,6 +15,7 @@ public class Product {
         this.productID = productID;
         this.productName = productName;
         this.productPrice = productPrice; 
+        
     }
 
     /**
@@ -31,7 +32,7 @@ public class Product {
      */
     public void setProductID(String productID) {
         if(productID == null || productID.isEmpty()){
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("productID must be a valid string");
         }
         else{this.productID = productID;}
     }
@@ -49,6 +50,9 @@ public class Product {
      * @param productName 
      */
     public void setProductName(String productName) {
+        if(productName == null || productName.isEmpty()){
+            throw new IllegalArgumentException("productName must be a valid string");
+        }
         this.productName = productName;
     }
 
@@ -64,6 +68,9 @@ public class Product {
      * @param productPrice 
      */
     public void setProductPrice(double productPrice) {
+        if(productPrice<0){
+            throw new IllegalArgumentException("productPrice must be greater than 0");
+        }
         this.productPrice = productPrice;
     }
     /**
@@ -71,12 +78,13 @@ public class Product {
      * the array is a normal array so the majority of the method is just resizing the array. the discounts get populated later.
      * @param discount - A DiscountStrategy
      */
-    public void addDiscount(DiscountStrategy discount){
+    public void pushDiscount(DiscountStrategy discount){
         DiscountStrategy[] tempDiscounts = new DiscountStrategy[discounts.length + 1];
         System.arraycopy(discounts, 0, tempDiscounts, 0, discounts.length);
         tempDiscounts[discounts.length] = discount;
         discounts = tempDiscounts;
-        populateDiscounts(discounts[0].getQty());
+        
+            populateDiscounts(discounts[0].getQty());
     }
     
     /**

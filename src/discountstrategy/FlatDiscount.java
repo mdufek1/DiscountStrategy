@@ -7,20 +7,29 @@ package discountstrategy;
  */
 public class FlatDiscount implements DiscountStrategy {
     public static final String DISCOUNT_TYPE = "Flat Discount";
-    public double discountAmmount = 1.00;
+    public double discountAmount = 1.00;
     public int qty;
     private double productPrice;
     private double calculatedDiscount;
 
-    public FlatDiscount(double discountAmmount) {
-        this.discountAmmount = discountAmmount;
+    public FlatDiscount(double discountAmount) {
+        this.discountAmount = discountAmount;
     }
     
     
     @Override
     public void discount(int qty, double productPrice) {
-      calculatedDiscount = productPrice - (qty * discountAmmount);
-    }
+        if(qty<1){
+            throw new IllegalArgumentException("Quantity must be 1 or greater");
+        }
+       else if(productPrice<0){
+            throw new IllegalArgumentException("productPrice must be greater than 0");
+        }
+       else{
+      calculatedDiscount = productPrice - (qty * discountAmount);
+    
+       }
+       }
 
     @Override
     public String getDISCOUNT_TYPE() {
@@ -28,12 +37,15 @@ public class FlatDiscount implements DiscountStrategy {
     }
 
     public double getDiscountAmount() {
-        return discountAmmount;
+        return discountAmount;
     }
 
     @Override
-    public void setDiscountAmount(double discountAmmount) {
-        this.discountAmmount = discountAmmount;
+    public void setDiscountAmount(double discountAmount) {
+        if(discountAmount > 1 || discountAmount < 0){
+            throw new IllegalArgumentException("The discount amount must be less than one and greater than or equal to 0"); 
+        }
+        this.discountAmount = discountAmount;
     }
 
     @Override
@@ -53,6 +65,9 @@ public class FlatDiscount implements DiscountStrategy {
 
     @Override
     public void setQty(int qty) {
+//        if(qty<1){
+//            throw new IllegalArgumentException("Quantity must be 1 or greater");
+//        }
        this.qty = qty;
     }
 

@@ -9,15 +9,17 @@ public class Receipt {
     private Product product;
     LineItem lineItem = new LineItem();
     LineItem[] lineItems = new LineItem[0];
-    
+    DatabaseStrategy database = new DummyDatabase();
     /**
      * Looks up a customer in a database and initializes the customer object
      * @param customerNumber - the customer number, passed in from the registers StartOrder Method.
      */
-     public void customerLookup(String customerNumber){
-        
-        
-        for (Customer i: DummyDatabase.customers) {
+     public void startNewOrder(String customerNumber){
+//        if(customerNumber == null || customerNumber.isEmpty()){
+//            throw new IllegalArgumentException("CustomerNumber must be a valid string");
+//        }
+        database.initializeDiscounts();
+        for (Customer i: database.getCustomers()) {
            
             if(i.getCustomerNumber().equals(customerNumber)){
                 
@@ -38,8 +40,15 @@ public class Receipt {
      * @param qty - quantity of the item passed in from the registers checkOutItem method
      */
     public void addCheckedOutItem(String productID, int qty){
-       
-         for (Product p : DummyDatabase.products) {
+        
+        if(productID == null || productID.isEmpty()){
+            throw new IllegalArgumentException("productID must be a valid string");
+        }
+        else if(qty<1){
+            throw new IllegalArgumentException("Quantity must be 1 or greater");
+        }
+        
+         for (Product p : database.getProducts()) {
             if(p.getProductID().equals(productID)){
                 product = p;
                 break;
@@ -49,8 +58,7 @@ public class Receipt {
             }
           
         }
-        
-         product.populateDiscounts(qty);
+        product.populateDiscounts(qty);
         addLineItem( lineItem.calculateLine(product, qty));
          
          

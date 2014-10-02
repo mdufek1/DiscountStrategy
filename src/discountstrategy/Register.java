@@ -15,11 +15,16 @@ public class Register {
      * Starts a new order, creates a new receipt object, and looks up the customer number to 
      * initialize the variable on the receipt.
      * @param customerNumber - The customer number
+     * @param database
      *
      */
     public void startOrder(String customerNumber){
+//        if(customerNumber == null || customerNumber.isEmpty()){
+//            throw new IllegalArgumentException("CustomerNumber must be a valid string");
+//        }
+        
         receipt = new Receipt();
-        receipt.customerLookup(customerNumber);
+        receipt.startNewOrder(customerNumber);
     }
     
     /**
@@ -28,12 +33,19 @@ public class Register {
      * @param qty  - the quantity of the product
      */
     public void checkOutItem(String productID, int qty){
+        if(productID == null || productID.isEmpty()){
+            throw new IllegalArgumentException("productID must be a valid string");
+        }
+        else if(qty<1){
+            throw new IllegalArgumentException("Quantity must be 1 or greater");
+        }
         
-        receipt.addCheckedOutItem(productID, qty);
+        else{receipt.addCheckedOutItem(productID, qty);}
     }
   
     /**
      * Simply outputs the receipt.
+     * @param display
      */
     public void outputReceipt(DisplayStrategy display){
         receiptPrinter.outputReceipt(this.receipt,display);

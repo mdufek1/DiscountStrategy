@@ -29,6 +29,9 @@ public class Customer {
      * @param firstName 
      */
     public void setFirstName(String firstName) {
+        if(firstName == null || firstName.isEmpty()){
+            throw new IllegalArgumentException("CustomerNumber must be a valid string");
+        }
         this.firstName = firstName;
     }
 
@@ -45,6 +48,9 @@ public class Customer {
      * @param lastName 
      */
     public void setLastName(String lastName) {
+        if(lastName == null || lastName.isEmpty()){
+            throw new IllegalArgumentException("CustomerNumber must be a valid string");
+        }
         this.lastName = lastName;
     }
 
@@ -61,6 +67,9 @@ public class Customer {
      * @param customerNumber 
      */
     public void setCustomerNumber(String customerNumber) {
+        if(customerNumber == null || customerNumber.isEmpty()){
+            throw new IllegalArgumentException("CustomerNumber must be a valid string");
+        }
         this.customerNumber = customerNumber;
     }
     
