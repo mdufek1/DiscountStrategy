@@ -3,16 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package discountstrategy;
 
-
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author mdufek1
+ * @author Mike
  */
-public interface DisplayStrategy {
+public class GuiOutput implements DisplayStrategy{
+
+    @Override
+    public void outputReciept(String message) {  
+      JOptionPane.showMessageDialog(null, message);
+   
+    }
     
-    public abstract void outputReciept(String message);
 }

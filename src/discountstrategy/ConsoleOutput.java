@@ -3,16 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package discountstrategy;
-
-
 
 /**
  *
- * @author mdufek1
+ * @author Mike
  */
-public interface DisplayStrategy {
+public class ConsoleOutput implements DisplayStrategy{
+
+    @Override
+    public void outputReciept(String message) {
+        System.out.println(message);
+    }
+
+
     
-    public abstract void outputReciept(String message);
 }

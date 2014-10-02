@@ -35,8 +35,9 @@ public class Register {
     /**
      * Simply outputs the receipt.
      */
-    public void outputReceipt(){
-        receiptPrinter.outputReceipt(this.receipt);
+    public void outputReceipt(DisplayStrategy display){
+        receiptPrinter.outputReceipt(this.receipt,display);
     }
+
 
 }
