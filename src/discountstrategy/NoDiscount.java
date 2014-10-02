@@ -1,37 +1,37 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 package discountstrategy;
 
 /**
- * this class discounts a product by a percentage
- * @author Mike
+ *
+ * @author mdufek1
  */
-public class PercentDiscount implements DiscountStrategy {
-    public static final String DISCOUNT_TYPE = "Percent Discount";
-    private double discountAmount = 0.15;
+public class NoDiscount implements DiscountStrategy{
+
+    public static final String DISCOUNT_TYPE = "No Discount";
+    public final double discountAmount = 0;
     public int qty;
     private double productPrice;
     private double calculatedDiscount;
+
+    
     
     @Override
     public double discount(int qty, double productPrice) {
-       if(qty<1){
+        if(qty<1){
             throw new IllegalArgumentException("Quantity must be 1 or greater");
         }
        else if(productPrice<0){
             throw new IllegalArgumentException("productPrice must be greater than 0");
         }
        else{
-       calculatedDiscount = (productPrice * qty) * discountAmount;
+      calculatedDiscount = 0;
        return calculatedDiscount;
        }
-       
-    }
-
-    public PercentDiscount() {
-    }
-
-    public PercentDiscount(double discountAmount) {
-        setDiscountAmount(discountAmount);
     }
 
     @Override
@@ -39,19 +39,14 @@ public class PercentDiscount implements DiscountStrategy {
         return DISCOUNT_TYPE;
     }
 
-    @Override
     public double getDiscountAmount() {
         return discountAmount;
     }
 
     @Override
     public void setDiscountAmount(double discountAmount) {
-        if(discountAmount > 1 || discountAmount < 0){
-            throw new IllegalArgumentException("The discount amount must be less than one and greater than or equal to 0"); 
-        }
-        else{this.discountAmount = discountAmount;}
+       
     }
-    
 
     @Override
     public double getProductPrice() {
@@ -70,9 +65,6 @@ public class PercentDiscount implements DiscountStrategy {
 
     @Override
     public void setQty(int qty) {
-//       if(qty<1){
-//            throw new IllegalArgumentException("Quantity must be 1 or greater");
-//        }
        this.qty = qty;
     }
 
@@ -80,7 +72,10 @@ public class PercentDiscount implements DiscountStrategy {
     public double getCalculatedDiscount() {
         return calculatedDiscount;
     }
+   
+
+
+
     
-    
-    
+
 }

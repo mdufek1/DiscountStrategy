@@ -18,7 +18,6 @@ public class Receipt {
 //        if(customerNumber == null || customerNumber.isEmpty()){
 //            throw new IllegalArgumentException("CustomerNumber must be a valid string");
 //        }
-        database.initializeDiscounts();
         for (Customer i: database.getCustomers()) {
            
             if(i.getCustomerNumber().equals(customerNumber)){
@@ -54,11 +53,11 @@ public class Receipt {
                 break;
             }
             else{
-                product = new Product("Not Found","Not Found",0.00);
+                product = new Product("Not Found","Not Found",0.00,new NoDiscount());
             }
           
         }
-        product.populateDiscounts(qty);
+       // product.populateDiscounts(qty);
         addLineItem( lineItem.calculateLine(product, qty));
          
          

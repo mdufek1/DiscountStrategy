@@ -10,7 +10,7 @@ public interface DiscountStrategy {
      * @param qty
      * @param productPrice 
      */
-    public abstract void discount(int qty, double productPrice);
+    public abstract double discount(int qty, double productPrice);
     /**
      * gets the discount type
      * @return 

@@ -12,10 +12,6 @@ package discountstrategy;
  */
 public interface DatabaseStrategy {
     /**
-     * Initializes the discounts for each product
-     */
-    public abstract void initializeDiscounts();
-    /**
      * gets the product array
      * @return 
      */

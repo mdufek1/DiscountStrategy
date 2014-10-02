@@ -18,7 +18,7 @@ public class FlatDiscount implements DiscountStrategy {
     
     
     @Override
-    public void discount(int qty, double productPrice) {
+    public double discount(int qty, double productPrice) {
         if(qty<1){
             throw new IllegalArgumentException("Quantity must be 1 or greater");
         }
@@ -27,7 +27,7 @@ public class FlatDiscount implements DiscountStrategy {
         }
        else{
       calculatedDiscount = productPrice - (qty * discountAmount);
-    
+      return calculatedDiscount;
        }
        }
 
