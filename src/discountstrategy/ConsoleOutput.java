@@ -6,7 +6,7 @@
 package discountstrategy;
 
 /**
- *
+ *This class is plain console output
  * @author Mike
  */
 public class ConsoleOutput implements DisplayStrategy{

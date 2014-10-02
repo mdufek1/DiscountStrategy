@@ -8,7 +8,7 @@ package discountstrategy;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *This class is a swing GUI output
  * @author Mike
  */
 public class GuiOutput implements DisplayStrategy{

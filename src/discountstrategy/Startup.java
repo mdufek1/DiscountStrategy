@@ -1,12 +1,7 @@
 package discountstrategy;
 /*
 * Todo:
-*       Comment:
-            DisplayStrategy
-*       Create:
-            DisplayStrategy
-            GuiOutput
-            ConsoleOutput
+
         
 */
 /**
